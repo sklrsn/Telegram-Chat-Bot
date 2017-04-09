@@ -21,12 +21,14 @@ def store_data(request):
         # Date Needs to be fixed .. Currently hard coded as today date
         print(updates["result"][i]["message"]["date"])
         print(time.ctime(updates["result"][i]["message"]["date"]))
+        print(datetime.today())
+        print(datetime.fromtimestamp(updates["result"][i]["message"]["date"]))
 
         app_user = ApplicationUser.objects.get(user_id=updates["result"][i]["message"]["from"]["id"])
         message = MessageHolder(user_id=app_user,
                                 message=updates["result"][i]["message"]["text"],
                                 message_id=updates["result"][i]["message"]["message_id"],
-                                message_date=datetime.today())
+                                message_date=datetime.fromtimestamp(updates["result"][i]["message"]["date"]))
         message.save()
         i = i + 1
     return JsonResponse({"Success": True})

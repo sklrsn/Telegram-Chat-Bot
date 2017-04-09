@@ -35,7 +35,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'WebCrawler'
+    'WebCrawler',
+    'rest_framework',
+    'Explorer',
 ]
 
 MIDDLEWARE = [
