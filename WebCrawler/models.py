@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 
 class ApplicationUser(models.Model):
@@ -17,8 +18,8 @@ class MessageHolder(models.Model):
     user_id = models.ForeignKey(ApplicationUser, to_field="user_id", db_column="user_id")
     message_id = models.BigIntegerField(blank=True)
     message = models.TextField(max_length=1000)
+    message_date = models.DateTimeField(default=datetime.today())
 
-    # Add date field
     class Meta:
         db_table = "MessageHolder"
 
