@@ -1,13 +1,13 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializer import UserNameSerializer, DateSerializer
+from .serializer import UserNameSerializer, DateSerializer, KeyWordSerializer
 from WebCrawler.models import ApplicationUser, MessageHolder
 from datetime import datetime
 import itertools
 
 
-class ExploreByUserName(APIView):
+class ExploreByUsername(APIView):
     def post(self, request):
         try:
             serializer = UserNameSerializer(data=request.data)
@@ -46,5 +46,24 @@ class ExploreByDate(APIView):
                     result[str(data[0].username)] = temp
             return Response(result, status=status.HTTP_200_OK)
 
+        except Exception as e:
+            print(e)
+
+
+class ExploreByKeyword(APIView):
+    def post(self, request):
+        try:
+            serializer = KeyWordSerializer(data=request.data)
+            if serializer.is_valid():
+                messages = MessageHolder.objects.filter(message__search=serializer.data['keyword'])
+                data = itertools.groupby(messages, lambda record: record.user_id)
+                messages_by_user = [(user, list(message_this_day)) for user, message_this_day in data]
+                result = dict()
+                for data in messages_by_user:
+                    temp = []
+                    for msg in data[1]:
+                        temp.append(str(msg.message_id) + "." + msg.message)
+                    result[str(data[0].username)] = temp
+                return Response(result, status=status.HTTP_200_OK)
         except Exception as e:
             print(e)
