@@ -5,17 +5,13 @@ from django.http import JsonResponse, HttpResponse
 from datetime import datetime
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
-
-TOKEN = "367274256:AAFh1eeLfF8QIqC7XH0KcoR4pIIK7o_7Y_k"
-URL = "https://api.telegram.org/bot{}/".format(TOKEN)
+from .constants import URL
 
 
 @csrf_exempt
 @require_POST
 def store_data_web_hook(request):
-    print(request.body)
     updates = json.loads(request.body.decode('utf-8'))
-    print(updates)
     if not ApplicationUser.objects.filter(user_id=updates["message"]["from"]["id"]).exists():
         app_user = ApplicationUser(user_id=updates["message"]["from"]["id"],
                                    first_name=updates["message"]["from"]["first_name"],
