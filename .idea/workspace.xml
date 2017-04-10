@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fed9bd7d-8d6d-45b8-948e-9ee5cec04025" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Explorer/serializer.py" afterPath="$PROJECT_DIR$/Explorer/serializer.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Explorer/views.py" afterPath="$PROJECT_DIR$/Explorer/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TelegramChatBot/urls.py" afterPath="$PROJECT_DIR$/TelegramChatBot/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebCrawler/views.py" afterPath="$PROJECT_DIR$/WebCrawler/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,7 +43,7 @@
         <entry file="file://$PROJECT_DIR$/Explorer/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="721">
-              <caret line="57" column="0" lean-forward="true" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+              <caret line="51" column="0" lean-forward="true" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -659,7 +655,7 @@
     <entry file="file://$PROJECT_DIR$/Explorer/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="721">
-          <caret line="57" column="0" lean-forward="true" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <caret line="51" column="0" lean-forward="true" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>

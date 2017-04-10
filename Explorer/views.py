@@ -39,18 +39,12 @@ class ExploreByDate(APIView):
 
                 data = itertools.groupby(messages, lambda record: record.user_id)
                 messages_by_user = [(user, list(message_this_day)) for user, message_this_day in data]
-                print(messages_by_user)
-                users = []
-                info = []
+                result = dict()
                 for data in messages_by_user:
-                    users.append(data[0])
-                    info.append(data[1])
-            result = dict()
-            data = []
-            for msg in messages:
-                data.append(str(msg.message_id) + "." + msg.message)
-
-                result["messages"] = data
+                    temp = []
+                    for msg in data[1]:
+                        temp.append(str(msg.message_id) + "." + msg.message)
+                    result[str(data[0].username)] = temp
             return Response(result, status=status.HTTP_200_OK)
 
         except Exception as e:
