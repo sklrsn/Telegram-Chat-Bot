@@ -14,7 +14,8 @@ URL = "https://api.telegram.org/bot{}/".format(TOKEN)
 @require_POST
 def store_data_web_hook(request):
     print(request.body)
-    updates = json.loads(request.body)
+    updates = json.loads(request.body.decode('utf-8'))
+    print(updates)
     if not ApplicationUser.objects.filter(user_id=updates["message"]["from"]["id"]).exists():
         app_user = ApplicationUser(user_id=updates["message"]["from"]["id"],
                                    first_name=updates["message"]["from"]["first_name"],
