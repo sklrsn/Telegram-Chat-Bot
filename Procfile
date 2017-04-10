@@ -1,0 +1,1 @@
+web: gunicorn TelegramChatBot.wsgi --log-file -
