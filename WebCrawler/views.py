@@ -13,6 +13,7 @@ URL = "https://api.telegram.org/bot{}/".format(TOKEN)
 @csrf_exempt
 @require_POST
 def store_data_web_hook(request):
+    print(request.body)
     updates = json.loads(request.body)
     if not ApplicationUser.objects.filter(user_id=updates["message"]["from"]["id"]).exists():
         app_user = ApplicationUser(user_id=updates["message"]["from"]["id"],
