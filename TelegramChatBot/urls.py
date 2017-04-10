@@ -20,5 +20,6 @@ from Explorer import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^crawl/', include('WebCrawler.urls')),
-    url(r'^exploreByUserName/', views.ExploreByUserName.as_view())
+    url(r'^exploreByUserName/', views.ExploreByUserName.as_view()),
+    url(r'^exploreByDate/', views.ExploreByDate.as_view())
 ]

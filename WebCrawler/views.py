@@ -18,11 +18,6 @@ def store_data(request):
                                        first_name=updates["result"][i]["message"]["from"]["first_name"],
                                        username=updates["result"][i]["message"]["from"]["username"])
             app_user.save()
-        # Date Needs to be fixed .. Currently hard coded as today date
-        print(updates["result"][i]["message"]["date"])
-        print(time.ctime(updates["result"][i]["message"]["date"]))
-        print(datetime.today())
-        print(datetime.fromtimestamp(updates["result"][i]["message"]["date"]))
 
         app_user = ApplicationUser.objects.get(user_id=updates["result"][i]["message"]["from"]["id"])
         message = MessageHolder(user_id=app_user,
