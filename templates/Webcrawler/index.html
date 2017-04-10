@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ block.super }}
+{% endblock %}
+
+{% block header %}
+    {{ block.super }}
+    <script>
+        $(document).ready(function (e) {
+            $('.search-panel .dropdown-menu').find('a').click(function (e) {
+                e.preventDefault();
+                var param = $(this).attr("href").replace("#", "");
+                var concept = $(this).text();
+                $('.search-panel span#search_concept').text(concept);
+                $('.input-group #search_param').val(param);
+
+            });
+            $('#search_store').click(function (e) {
+                var text = $('#search_box').val();
+                var type = $('.search-panel span#search_concept').text();
+                location.href = "/crawl/search/?type=" + type + "&text=" + text;
+            });
+        });
+    </script>
+    <style>
+        .btn {
+            padding: 12px 16px;
+        }
+
+        .form-control {
+            height: 45.5px;
+            padding: 9px 15px;
+        }
+    </style>
+{% endblock %}
+
+{% block menubar %}
+    {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h3 align="center">Welcome to History Explorer</h3>
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+                <div class="input-group">
+                    <div class="input-group-btn search-panel">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <span id="search_concept">Select</span> <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" id="search_term">
+                            <li><a href="#contains">Keyword</a></li>
+                            <li><a href="#contains">Username</a></li>
+                        </ul>
+                    </div>
+                    <input type="hidden" name="search_param" value="all" id="search_param">
+                    <input type="text" class="form-control" name="x"
+                           placeholder="Please Enter Keyword or Username"
+                           id="search_box">
+                    <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" id="search_store"><span
+                            class="glyphicon glyphicon-search"></span></button>
+                </span>
+                </div>
+            </div>
+        </div>
+        {% for key, values in search_results.items %}
+            <ol>
+                <li>{{ key }}</li>
+                <ul>
+                    {% for value in values %}
+                        <li>{{ value }}</li>
+                    {% endfor %}
+                </ul>
+            </ol>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {{ block.super }}
+{% endblock %}

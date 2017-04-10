@@ -18,6 +18,7 @@ from django.contrib import admin
 from Explorer import views
 
 urlpatterns = [
+    url(r'^', include('WebCrawler.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^crawl/', include('WebCrawler.urls')),
     url(r'^exploreByUserName/', views.ExploreByUsername.as_view(), name="ExploreByUsername"),

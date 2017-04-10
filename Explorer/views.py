@@ -17,7 +17,7 @@ class ExploreByUsername(APIView):
                 result = dict()
                 data = []
                 for msg in messages:
-                    data.append(str(msg.message_id) + "." + msg.message)
+                    data.append(msg.message)
                 result["messages"] = data
                 return Response(result, status=status.HTTP_200_OK)
             return Response(status=status.HTTP_403_FORBIDDEN)
@@ -42,7 +42,7 @@ class ExploreByDate(APIView):
                 for data in messages_by_user:
                     temp = []
                     for msg in data[1]:
-                        temp.append(str(msg.message_id) + "." + msg.message)
+                        temp.append(msg.message)
                     result[str(data[0].username)] = temp
             return Response(result, status=status.HTTP_200_OK)
 
@@ -62,7 +62,7 @@ class ExploreByKeyword(APIView):
                 for data in messages_by_user:
                     temp = []
                     for msg in data[1]:
-                        temp.append(str(msg.message_id) + "." + msg.message)
+                        temp.append(msg.message)
                     result[str(data[0].username)] = temp
                 return Response(result, status=status.HTTP_200_OK)
         except Exception as e:
