@@ -15,13 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from Explorer import views
 
 urlpatterns = [
-    url(r'^', include('WebCrawler.urls')),
-    url(r'^admin/', admin.site.urls),
-    url(r'^crawl/', include('WebCrawler.urls')),
-    url(r'^exploreByUserName/', views.ExploreByUsername.as_view(), name="ExploreByUsername"),
-    url(r'^exploreByDate/', views.ExploreByDate.as_view(), name="ExploreByDate"),
-    url(r'^exploreByKeyword/', views.ExploreByKeyword.as_view(), name="ExploreByKeyword")
+    url(r'^', include('WebCrawler.urls'), name="home"),
+    url(r'^admin/', admin.site.urls, name="admin"),
+    url(r'^crawl/', include('WebCrawler.urls'), name="crawl"),
+    url(r'^v1/search/', include('Explorer.urls', namespace='v1'), name="explore1.0"),
 ]
