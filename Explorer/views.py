@@ -77,7 +77,7 @@ class ExploreByKeyword(APIView):
         try:
             serializer = KeyWordSerializer(data=request.data)
             if serializer.is_valid() and serializer.data['keyword']:
-                messages = MessageHolder.objects.filter(message__search=serializer.data['keyword'])
+                messages = MessageHolder.objects.filter(message__icontains=serializer.data['keyword'])
                 data = itertools.groupby(messages, lambda record: record.user_id)
                 messages_by_user = [(user, list(message_this_day)) for user, message_this_day in data]
                 result = dict()
