@@ -36,13 +36,28 @@ https://api.telegram.org/bot367274256:AAFh1eeLfF8QIqC7XH0KcoR4pIIK7o_7Y_k/delete
 
 -       ExploreByKeyword 
 https://blooming-eyrie-34141.herokuapp.com/v1/search/exploreByKeyword/
+Sample Request:
+{
+"keyword": "Good"
+}
+
 
 -       ExploreByUserName 
 https://blooming-eyrie-34141.herokuapp.com/v1/search/exploreByUserName/
+Sample Request:
+{
+"username": "s_kalai"
+}
+
 
 -       ExploreByDate
 
 https://blooming-eyrie-34141.herokuapp.com/v1/search/exploreByDate/
+Sample Request:
+{
+"query_date": "2017/04/09"
+}
+
 
 **Heroku Application** 
 
