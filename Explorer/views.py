@@ -6,6 +6,12 @@ from WebCrawler.models import ApplicationUser, MessageHolder
 from datetime import datetime
 import itertools
 
+"""
+This class  (POST method) facilitates to retrieve Messages sent by a specific user.
+@Class_Name: ExploreByUsername
+@Params: username
+"""
+
 
 class ExploreByUsername(APIView):
     @staticmethod
@@ -24,6 +30,13 @@ class ExploreByUsername(APIView):
         except Exception as e:
             return Response(status=status.HTTP_403_FORBIDDEN)
         return Response(exception="Bad Request", status=status.HTTP_400_BAD_REQUEST)
+
+
+"""
+This class  (POST method) facilitates to retrieve Messages based on the date.
+@Class_Name: ExploreByDate
+@Params: query_date
+"""
 
 
 class ExploreByDate(APIView):
@@ -49,6 +62,13 @@ class ExploreByDate(APIView):
         except Exception as e:
             return Response(status=status.HTTP_403_FORBIDDEN)
         return Response(exception="Bad Request", status=status.HTTP_400_BAD_REQUEST)
+
+
+"""
+This class  (POST method) facilitates to retrieve Messages based on the keyword.
+@Class_Name: ExploreByKeyword
+@Params: keyword
+"""
 
 
 class ExploreByKeyword(APIView):

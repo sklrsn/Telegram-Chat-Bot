@@ -1,6 +1,11 @@
 from django.db import models
 from datetime import datetime
 
+"""
+@Class_Name: ApplicationUser
+@Params: user_id, first_name,username
+"""
+
 
 class ApplicationUser(models.Model):
     user_id = models.CharField(max_length=30, unique=True)
@@ -9,9 +14,17 @@ class ApplicationUser(models.Model):
 
     class Meta:
         db_table = "ApplicationUser"
+        verbose_name = "ApplicationUser"
+        verbose_name_plural = "ApplicationUsers"
 
     def __str__(self):
         return self.user_id
+
+
+"""
+@Class_Name: MessageHolder
+@Params: user_id, message_id,message,message_date
+"""
 
 
 class MessageHolder(models.Model):
@@ -22,6 +35,8 @@ class MessageHolder(models.Model):
 
     class Meta:
         db_table = "MessageHolder"
+        verbose_name = "MessageHolder"
+        verbose_name_plural = "MessageHolders"
 
     def __str__(self):
         return str(self.message_id)

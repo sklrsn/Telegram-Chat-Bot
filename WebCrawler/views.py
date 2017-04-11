@@ -9,6 +9,13 @@ from .constants import URL, exploreByKeyword, headers, exploreByUserName, explor
 from django.shortcuts import render, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
+"""
+@Method_Name: store_data_web_hook
+@Param_in: request
+@:returns: HttpResponse
+@Description: This Method receives HTTPS POST requests from telegram Bot API which contains a JSON-serialized data
+"""
+
 
 @csrf_exempt
 @require_POST
@@ -27,6 +34,15 @@ def store_data_web_hook(request):
                             message_date=datetime.fromtimestamp(updates["message"]["date"]))
     message.save()
     return HttpResponse(status=200)
+
+
+"""
+@Method_Name: store_data
+@Param_in: request
+@:returns: HttpResponse
+@Description: This Method can be used as an alternate to Webhook, When this method get invoked It fetches all the 
+updates from Telegram Bot
+"""
 
 
 def store_data(request):
@@ -49,6 +65,12 @@ def store_data(request):
     return JsonResponse({"Success": True})
 
 
+"""
+@Method_Name: search_content
+@Description: This method fetches content.
+"""
+
+
 def get_updates():
     url = URL + "getUpdates"
     return get_data(url)
@@ -63,11 +85,27 @@ def get_url(url):
     return response.content.decode("utf8")
 
 
+"""
+@Method_Name: search_content
+@Param_in: request
+@:returns: Page
+@Description: This Method renders Search page.
+"""
+
+
 def index(request):
     try:
         return render(request, 'Webcrawler/index.html')
     except Exception as e:
         print(e)
+
+
+"""
+@Method_Name: search_content
+@Param_in: request
+@:returns: Json Response
+@Description: This Method build requests to invoke REST APIs based on the user query type.
+"""
 
 
 def search_content(request):
@@ -92,6 +130,13 @@ def search_content(request):
     except Exception as e:
         print(e)
         return HttpResponseRedirect(redirect_to=reverse('index'))
+
+
+"""
+@Method_Name: get_data
+@Param_in: request,url,header,payload
+@Description: This Method invokes REST APIs to fetch data based on the user query type
+"""
 
 
 def get_data(request, url, header, payload):
