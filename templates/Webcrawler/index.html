@@ -80,6 +80,8 @@
         </div>
         <br>
         {% if search_results %}
+            <b class="uppercase">Search Results for your Query </b>
+            <br><br>
             {% for key, values in search_results.items %}
                 <ol class="list-group-item">
                     <li><b class="uppercase">{{ key }}</b></li>
