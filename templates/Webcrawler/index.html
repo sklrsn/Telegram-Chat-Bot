@@ -79,16 +79,20 @@
             </div>
         </div>
         <br>
-        {% for key, values in search_results.items %}
-            <ol class="list-group-item">
-                <li><b class="uppercase">{{ key }}</b></li>
-                <ul class="list-group">
-                    {% for value in values %}
-                        <li class="list-group-item">{{ value }}</li>
-                    {% endfor %}
-                </ul>
-            </ol>
-        {% endfor %}
+        {% if search_results %}
+            {% for key, values in search_results.items %}
+                <ol class="list-group-item">
+                    <li><b class="uppercase">{{ key }}</b></li>
+                    <ul class="list-group">
+                        {% for value in values %}
+                            <li class="list-group-item">{{ value }}</li>
+                        {% endfor %}
+                    </ul>
+                </ol>
+            {% endfor %}
+        {% else %}
+            <b class="uppercase">Sorry,No data Found. Please Refine your Query for better Results </b>
+        {% endif %}
     </div>
 {% endblock %}
 
