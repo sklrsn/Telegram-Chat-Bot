@@ -1,15 +1,15 @@
 # Telegram Bot History Explorer
 
-#Problem Statement:
+# Problem Statement:
 1. Write a Telegram Chat bot that logs discussions to a database. Telegram bots are special Telegram accounts, please read https://core.telegram.org/bots. Telegram bot API is defined in https://core.telegram.org/bots/api.
 
 2. Implement a service that provides REST API to perform filtered search for the discussion history. Ideally API should allow searching at least by user, date and provide also free text search.
 
 3. Optionally (if you still have time) also implement a web UI for the search.
 
-#Solution:
+# Solution:
 
-#Telegram Bot details
+**Telegram Bot details**
 
 **Name** - Telegram chat Bot
 
@@ -32,7 +32,7 @@ https://api.telegram.org/bot367274256:AAFh1eeLfF8QIqC7XH0KcoR4pIIK7o_7Y_k/setWeb
 -       deleteWebHook
 https://api.telegram.org/bot367274256:AAFh1eeLfF8QIqC7XH0KcoR4pIIK7o_7Y_k/deleteWebhook?url=https://vast-dusk-62970.herokuapp.com/crawl/store
 
-#REST APIs
+**REST APIs**
 
 -       ExploreByKeyword 
 https://blooming-eyrie-34141.herokuapp.com/v1/search/exploreByKeyword/
@@ -40,9 +40,10 @@ https://blooming-eyrie-34141.herokuapp.com/v1/search/exploreByKeyword/
 -       ExploreByUserName 
 https://blooming-eyrie-34141.herokuapp.com/v1/search/exploreByUserName/
 
--       exploreByDate
+-       ExploreByDate
 
 https://blooming-eyrie-34141.herokuapp.com/v1/search/exploreByDate/
 
-#Heroku Application 
+**Heroku Application** 
+
 https://blooming-eyrie-34141.herokuapp.com/
