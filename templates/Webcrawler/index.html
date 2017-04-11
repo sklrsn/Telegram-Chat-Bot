@@ -6,6 +6,7 @@
 
 {% block header %}
     {{ block.super }}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script>
         $(document).ready(function (e) {
             $('.search-panel .dropdown-menu').find('a').click(function (e) {
@@ -23,6 +24,7 @@
             });
         });
     </script>
+
     <style>
         .btn {
             padding: 12px 16px;
@@ -32,7 +34,13 @@
             height: 45.5px;
             padding: 9px 15px;
         }
+
+        .uppercase {
+            text-transform: uppercase;
+        }
     </style>
+
+
 {% endblock %}
 
 {% block menubar %}
@@ -65,12 +73,13 @@
                 </div>
             </div>
         </div>
+        <br>
         {% for key, values in search_results.items %}
-            <ol>
-                <li>{{ key }}</li>
-                <ul>
+            <ol class="list-group-item">
+                <li><b class="uppercase">{{ key }}</b></li>
+                <ul class="list-group">
                     {% for value in values %}
-                        <li>{{ value }}</li>
+                        <li class="list-group-item">{{ value }}</li>
                     {% endfor %}
                 </ul>
             </ol>
