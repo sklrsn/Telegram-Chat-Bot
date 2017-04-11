@@ -19,9 +19,7 @@ Telegram bot API Provides two Methods to Receive data.
 
 1.getupdates()
   - This API helps to retrieve from Telegram database. But we have to keep on polling to get contents.
-  
-  - I used this method to create initial solution to this problem.
-  
+
 2.setWebHook()
 -  This method sends an HTTPS POST request to the specified url, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts.
 
