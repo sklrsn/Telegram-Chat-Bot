@@ -20,20 +20,27 @@ from django.core.urlresolvers import reverse
 @csrf_exempt
 @require_POST
 def store_data_web_hook(request):
-    updates = json.loads(request.body.decode('utf-8'))
-    if not ApplicationUser.objects.filter(user_id=updates["message"]["from"]["id"]).exists():
-        app_user = ApplicationUser(user_id=updates["message"]["from"]["id"],
-                                   first_name=updates["message"]["from"]["first_name"],
-                                   username=updates["message"]["from"]["username"])
-        app_user.save()
+    try:
+        updates = json.loads(request.body.decode('utf-8'))
+        user_name = ""
+        if "username" in updates["message"]["from"]:
+            user_name = updates["message"]["from"]["username"]
 
-    app_user = ApplicationUser.objects.get(user_id=updates["message"]["from"]["id"])
-    message = MessageHolder(user_id=app_user,
-                            message=updates["message"]["text"],
-                            message_id=updates["message"]["message_id"],
-                            message_date=datetime.fromtimestamp(updates["message"]["date"]))
-    message.save()
-    return HttpResponse(status=200)
+        if not ApplicationUser.objects.filter(user_id=updates["message"]["from"]["id"]).exists():
+            app_user = ApplicationUser(user_id=updates["message"]["from"]["id"],
+                                       first_name=updates["message"]["from"]["first_name"],
+                                       username=user_name)
+            app_user.save()
+
+        app_user = ApplicationUser.objects.get(user_id=updates["message"]["from"]["id"])
+        message = MessageHolder(user_id=app_user,
+                                message=updates["message"]["text"],
+                                message_id=updates["message"]["message_id"],
+                                message_date=datetime.fromtimestamp(updates["message"]["date"]))
+        message.save()
+        return HttpResponse(status=200)
+    except Exception as e:
+        return HttpResponse(status=400)
 
 
 """
