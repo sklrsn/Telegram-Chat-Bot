@@ -1,4 +1,4 @@
-# Telegram chat Bot History Explorer
+# Telegram Chat Bot History Explorer
 
 # Problem Statement:
 1. Write a Telegram Chat bot that logs discussions to a database. Telegram bots are special Telegram accounts, please read https://core.telegram.org/bots. Telegram bot API is defined in https://core.telegram.org/bots/api.
