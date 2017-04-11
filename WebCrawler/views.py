@@ -5,7 +5,7 @@ from django.http import JsonResponse, HttpResponse
 from datetime import datetime
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
-from .constants import URL, exploreByKeyword, headers, exploreByUserName
+from .constants import URL, exploreByKeyword, headers, exploreByUserName, exploreByDate
 from django.shortcuts import render, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
@@ -82,6 +82,10 @@ def search_content(request):
         elif search_type == "Username" and search_text != "":
             payload = {'username': search_text}
             return get_data(request, exploreByUserName, headers, payload)
+
+        elif search_type == "Date" and search_text != "":
+            payload = {'query_date': search_text}
+            return get_data(request, exploreByDate, headers, payload)
         else:
             return render(request, 'Webcrawler/index.html', {'search_results': "No Results Found :("})
 

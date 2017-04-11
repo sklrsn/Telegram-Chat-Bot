@@ -32,7 +32,7 @@ class ExploreByDate(APIView):
             serializer = DateSerializer(data=request.data)
             if serializer.is_valid():
                 query_date = datetime.strptime(serializer.data['query_date'],
-                                               "%Y-%m-%d %H:%M:%S")
+                                               "%Y/%m/%d")
                 messages = MessageHolder.objects.filter(message_date__year=query_date.year,
                                                         message_date__month=query_date.month,
                                                         message_date__day=query_date.day)
@@ -45,7 +45,6 @@ class ExploreByDate(APIView):
                         temp.append(msg.message)
                     result[str(data[0].username)] = temp
             return Response(result, status=status.HTTP_200_OK)
-
         except Exception as e:
             print(e)
 
