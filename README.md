@@ -5,7 +5,7 @@
 
 2. Implement a service that provides REST API to perform filtered search for the discussion history. Ideally API should allow searching at least by user, date and provide also free text search.
 
-3. Optionally (if you still have time) also implement a web UI for the search.
+3. Web UI for the search.
 
 # Solution:
 
