@@ -1,6 +1,6 @@
 # Telegram Chat Bot History Explorer
 
-# **Telegram Bot details**
+ **Telegram Bot details**
 
 **Name** - Telegram chat Bot
 
