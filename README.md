@@ -1,15 +1,6 @@
 # Telegram Chat Bot History Explorer
 
-# Problem Statement:
-1. Write a Telegram Chat bot that logs discussions to a database. Telegram bots are special Telegram accounts, please read https://core.telegram.org/bots. Telegram bot API is defined in https://core.telegram.org/bots/api.
-
-2. Implement a service that provides REST API to perform filtered search for the discussion history. Ideally API should allow searching at least by user, date and provide also free text search.
-
-3. Web UI for the search.
-
-# Solution:
-
-**Telegram Bot details**
+# **Telegram Bot details**
 
 **Name** - Telegram chat Bot
 
